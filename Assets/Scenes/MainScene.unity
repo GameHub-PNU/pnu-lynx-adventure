@@ -398,7 +398,8 @@ GameObject:
   - component: {fileID: 812423282}
   - component: {fileID: 812423285}
   - component: {fileID: 812423284}
-  m_Layer: 0
+  - component: {fileID: 812423286}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,9 +465,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812423281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.28, y: -3, z: 0}
+  m_LocalPosition: {x: -6.45, y: 17.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1316412240}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -479,7 +481,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 812423281}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 32462310ae5d3f24a92f54250d33bd4d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -501,12 +503,30 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &812423286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812423281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912b3a64a9690d04eb01fc0307919833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  jumpForce: 12
+  groundCheckPoint: {fileID: 1316412240}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &853250488
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 853250490}
   - component: {fileID: 853250489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: simple_setup_level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,6 +775,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1316412239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316412240}
+  m_Layer: 7
+  m_Name: Ground Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1316412240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316412239}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 812423283}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575986987
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +902,7 @@ GameObject:
   - component: {fileID: 1861275305}
   - component: {fileID: 1861275304}
   - component: {fileID: 1861275303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921879831}
   - component: {fileID: 1921879832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ceiling Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
