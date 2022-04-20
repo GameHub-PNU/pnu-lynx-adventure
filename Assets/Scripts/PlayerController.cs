@@ -14,10 +14,14 @@ public class PlayerController : MonoBehaviour
 
     private bool canDoubleJump;
 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -48,5 +52,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if (rigidBody.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (rigidBody.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+        animator.SetFloat("moveSpeed", Mathf.Abs(rigidBody.velocity.x));
+        animator.SetBool("isGrounded", isGrounded);
+
     }
 }
