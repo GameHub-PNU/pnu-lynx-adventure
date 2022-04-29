@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public float moveSpeed;
     private Rigidbody2D rigidBody;
     public float jumpForce;
@@ -17,6 +19,15 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    public float knockBackLength, knockBackForce;
+    private float knockBackCounter;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -27,43 +38,62 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        rigidBody.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), rigidBody.velocity.y);
-
-        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
-
-        //if (isGrounded)
-        //{
-        //    canDoubleJump = true;
-        //}
-
-        if (Input.GetButtonDown("Jump"))
+        if (knockBackCounter <= 0)
         {
-            if (isGrounded)
+
+            rigidBody.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), rigidBody.velocity.y);
+
+            isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
+
+            //if (isGrounded)
+            //{
+            //    canDoubleJump = true;
+            //}
+
+            if (Input.GetButtonDown("Jump"))
             {
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-                canDoubleJump = true;
-            }
-            else
-            {
-                if (canDoubleJump)
+                if (isGrounded)
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-                    canDoubleJump = false;
+                    canDoubleJump = true;
+                }
+                else
+                {
+                    if (canDoubleJump)
+                    {
+                        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+                        canDoubleJump = false;
+                    }
                 }
             }
-        }
 
-        if (rigidBody.velocity.x < 0)
+            if (rigidBody.velocity.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (rigidBody.velocity.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+        } else
         {
-            spriteRenderer.flipX = true;
-        }
-        else if (rigidBody.velocity.x > 0)
-        {
-            spriteRenderer.flipX = false;
+            knockBackCounter -= Time.deltaTime;
+
+            rigidBody.velocity = new Vector2(spriteRenderer.flipX ? knockBackForce : -knockBackForce, rigidBody.velocity.y);
+
         }
 
         animator.SetFloat("moveSpeed", Mathf.Abs(rigidBody.velocity.x));
         animator.SetBool("isGrounded", isGrounded);
 
     }
+
+    public void KnockBack()
+    {
+        knockBackCounter = knockBackLength;
+        rigidBody.velocity = new Vector2(0f, knockBackForce);
+
+        animator.SetTrigger("hurt");
+    }
+
 }
