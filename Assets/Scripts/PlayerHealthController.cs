@@ -49,8 +49,10 @@ public class PlayerHealthController : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            gameObject.SetActive(false);
-        } else
+            
+            LevelManager.instance.RespawnPlayer();
+        } 
+        else
         {
             invicibleCounter = invicibleLength;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);

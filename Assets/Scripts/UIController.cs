@@ -7,11 +7,9 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-    public Image[] healthHearts;
+    public Image heart1, heart2, heart3;
 
     public Sprite heartFull, heartHalf, heartEmpty;
-
-    private int heartIndex;
 
     private void Awake()
     {
@@ -21,7 +19,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        heartIndex = PlayerHealthController.instance.currentHealth / 2;
+        
     }
 
     // Update is called once per frame
@@ -32,22 +30,55 @@ public class UIController : MonoBehaviour
 
     public void UpdateHealthDisplay()
     {
-        int currentHealth = PlayerHealthController.instance.currentHealth;
+        switch (PlayerHealthController.instance.currentHealth)
+        {
+            case 6:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartFull;
+                break;
 
-        if (currentHealth == 0)
-        {
-            healthHearts[0].sprite = heartEmpty;
-            return;
-        }
+            case 5:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartHalf;
+                break;
 
-        if (currentHealth % 2 != 0)
-        {
-            --heartIndex;
-            healthHearts[heartIndex].sprite = heartHalf;
-        }
-        else
-        {
-            healthHearts[heartIndex].sprite = heartEmpty;
+            case 4:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartEmpty;
+                break;
+
+            case 3:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartHalf;
+                heart3.sprite = heartEmpty;
+                break;
+
+            case 2:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                break;
+
+            case 1:
+                heart1.sprite = heartHalf;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                break;
+
+            case 0:
+                heart1.sprite = heartEmpty;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                break;
+
+            default:
+                heart1.sprite = heartEmpty;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                break;
         }
     }
 }
