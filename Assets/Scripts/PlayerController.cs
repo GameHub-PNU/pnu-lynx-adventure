@@ -57,15 +57,19 @@ public class PlayerController : MonoBehaviour
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
                     canDoubleJump = true;
+
+                    AudioManager.instance.PlaySFX(10);
                 }
                 else
                 {
                     if (canDoubleJump)
                     {
+                        AudioManager.instance.PlaySFX(10);
                         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
                         canDoubleJump = false;
                     }
                 }
+
             }
 
             if (rigidBody.velocity.x < 0)
@@ -100,6 +104,8 @@ public class PlayerController : MonoBehaviour
     public void Bounce()
     {
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, bounceForce);
+
+        AudioManager.instance.PlaySFX(10);
     }
 
 }
