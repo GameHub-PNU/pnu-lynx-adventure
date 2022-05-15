@@ -38,59 +38,60 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        if (knockBackCounter <= 0)
+        if (!PauseMenu.instance.isPaused)
         {
-
-            rigidBody.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), rigidBody.velocity.y);
-
-            isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
-
-            //if (isGrounded)
-            //{
-            //    canDoubleJump = true;
-            //}
-
-            if (Input.GetButtonDown("Jump"))
+            if (knockBackCounter <= 0)
             {
-                if (isGrounded)
-                {
-                    rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-                    canDoubleJump = true;
 
-                    AudioManager.instance.PlaySFX(10);
-                }
-                else
+                rigidBody.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), rigidBody.velocity.y);
+
+                isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
+
+                //if (isGrounded)
+                //{
+                //    canDoubleJump = true;
+                //}
+
+                if (Input.GetButtonDown("Jump"))
                 {
-                    if (canDoubleJump)
+                    if (isGrounded)
                     {
-                        AudioManager.instance.PlaySFX(10);
                         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-                        canDoubleJump = false;
+                        canDoubleJump = true;
+
+                        AudioManager.instance.PlaySFX(10);
                     }
+                    else
+                    {
+                        if (canDoubleJump)
+                        {
+                            AudioManager.instance.PlaySFX(10);
+                            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+                            canDoubleJump = false;
+                        }
+                    }
+
                 }
 
+                if (rigidBody.velocity.x < 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (rigidBody.velocity.x > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
             }
-
-            if (rigidBody.velocity.x < 0)
+            else
             {
-                spriteRenderer.flipX = true;
-            }
-            else if (rigidBody.velocity.x > 0)
-            {
-                spriteRenderer.flipX = false;
-            }
-        } else
-        {
-            knockBackCounter -= Time.deltaTime;
+                knockBackCounter -= Time.deltaTime;
 
-            rigidBody.velocity = new Vector2(spriteRenderer.flipX ? knockBackForce : -knockBackForce, rigidBody.velocity.y);
-
+                rigidBody.velocity = new Vector2(spriteRenderer.flipX ? knockBackForce : -knockBackForce, rigidBody.velocity.y);
+            }
         }
-
+        
         animator.SetFloat("moveSpeed", Mathf.Abs(rigidBody.velocity.x));
         animator.SetBool("isGrounded", isGrounded);
-
     }
 
     public void KnockBack()
