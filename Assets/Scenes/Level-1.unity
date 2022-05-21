@@ -3775,6 +3775,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3503281155871147677, guid: 8a93b68c87e1269489957e343573cf36, type: 3}
+      propertyPath: levelToLoad
+      value: Levels
+      objectReference: {fileID: 0}
     - target: {fileID: 7074772217118061045, guid: 8a93b68c87e1269489957e343573cf36, type: 3}
       propertyPath: m_Name
       value: Level Pack
