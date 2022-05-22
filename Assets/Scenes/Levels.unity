@@ -1811,6 +1811,14 @@ PrefabInstance:
       value: '2: High Jump'
       objectReference: {fileID: 0}
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: totalGems
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: targetTime
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: levelToLoad
       value: Level-2
       objectReference: {fileID: 0}
@@ -29630,6 +29638,18 @@ PrefabInstance:
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: isLevel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: levelName
+      value: '7: Boss'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: totalGems
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: targetTime
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: levelToLoad
