@@ -38,6 +38,16 @@ public class BossTankController : MonoBehaviour
         {
             case bossStates.shooting:
 
+                shotCounter -= Time.deltaTime;
+
+                if (shotCounter <= 0)
+                {
+                    shotCounter = timeBetweenShots;
+
+                    var newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    newBullet.transform.localScale = theBoss.localScale;
+                }
+
                 break;
 
             case bossStates.hurt:
