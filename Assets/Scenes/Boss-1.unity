@@ -175,10 +175,44 @@ MonoBehaviour:
   moveSpeed: 13
   leftPoint: {fileID: 797618435}
   rightPoint: {fileID: 165215227}
+  mine: {fileID: 9123573862931453915, guid: 4c2203008990a467abbfc56657241ad9, type: 3}
+  minePoint: {fileID: 146835592}
+  timeBetweenMines: 1
   bullet: {fileID: 8335008253669154079, guid: a4db9a38b1f1b4cfd9f5b933f549ae28, type: 3}
   firePoint: {fileID: 295062260}
   timeBetweenShots: 1.5
   hurtTime: 1
+  hitBox: {fileID: 1622140971}
+--- !u!1 &146835591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146835592}
+  m_Layer: 0
+  m_Name: MinePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146835592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146835591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5899973, y: -1.1600002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 212912573}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165215226
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,11 +320,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212912571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.529999, y: -0.92999995, z: 0}
+  m_LocalPosition: {x: 13.13, y: -0.92999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 295062260}
   - {fileID: 1622140972}
+  - {fileID: 146835592}
   m_Father: {fileID: 123614231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

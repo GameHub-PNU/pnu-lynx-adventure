@@ -14,6 +14,10 @@ public class BossTankController : MonoBehaviour
     public float moveSpeed;
     public Transform leftPoint, rightPoint;
     private bool moveRight;
+    public GameObject mine;
+    public Transform minePoint;
+    public float timeBetweenMines;
+    private float mineCounter;
 
     [Header("Shooting")]
     public GameObject bullet;
@@ -60,6 +64,8 @@ public class BossTankController : MonoBehaviour
                     if (hurtCounter <= 0)
                     {
                         currentState = bossStates.moving;
+
+                        mineCounter = 0f;
                     }
                 }
 
@@ -93,6 +99,15 @@ public class BossTankController : MonoBehaviour
                     }
                 }
 
+                mineCounter -= Time.deltaTime;
+
+                if (mineCounter <= 0)
+                {
+                    mineCounter = timeBetweenMines;
+
+                    Instantiate(mine, minePoint.position, minePoint.rotation);
+                } 
+
                 break;
         }
 
@@ -104,13 +119,22 @@ public class BossTankController : MonoBehaviour
         hurtCounter = hurtTime;
 
         anim.SetTrigger("Hit");
+
+        BossMine[] mines = FindObjectsOfType<BossMine>();
+        if (mines.Length > 0)
+        {
+            foreach(BossMine foundMine in mines)
+            {
+                foundMine.Explode();
+            }
+        }
     }
 
     private void EndMovement()
     {
         currentState = bossStates.shooting;
 
-        shotCounter = timeBetweenShots;
+        shotCounter = 0f;
 
         anim.SetTrigger("StopMoving");
 
