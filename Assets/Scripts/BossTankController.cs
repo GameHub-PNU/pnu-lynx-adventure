@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossTankController : MonoBehaviour
 {
-    public enum bossStates {shooting, hurt, moving};
+    public enum bossStates {shooting, hurt, moving, ended};
     public bossStates currentState;
 
     public Transform theBoss;
@@ -29,6 +29,12 @@ public class BossTankController : MonoBehaviour
     public float hurtTime;
     private float hurtCounter;
     public GameObject hitBox;
+
+    [Header("Health")]
+    public int health = 5;
+    public GameObject explosion, winPlatform;
+    private bool isDefeated;
+    public float shotSpeedUp, minesSpeedUp;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +72,18 @@ public class BossTankController : MonoBehaviour
                         currentState = bossStates.moving;
 
                         mineCounter = 0f;
+
+                        if (isDefeated)
+                        {
+                            theBoss.gameObject.SetActive(false);
+                            Instantiate(explosion, theBoss.position, theBoss.rotation);
+
+                            winPlatform.SetActive(true);
+
+                            AudioManager.instance.StopBossMusic();
+
+                            currentState = bossStates.ended;
+                        }
                     }
                 }
 
@@ -120,6 +138,8 @@ public class BossTankController : MonoBehaviour
 
         anim.SetTrigger("Hit");
 
+        AudioManager.instance.PlaySFX(0);
+
         BossMine[] mines = FindObjectsOfType<BossMine>();
         if (mines.Length > 0)
         {
@@ -127,6 +147,17 @@ public class BossTankController : MonoBehaviour
             {
                 foundMine.Explode();
             }
+        }
+
+        health--;
+
+        if (health <= 0)
+        {
+            isDefeated = true;
+        } else
+        {
+            timeBetweenShots /= shotSpeedUp;
+            timeBetweenMines /= minesSpeedUp;
         }
     }
 

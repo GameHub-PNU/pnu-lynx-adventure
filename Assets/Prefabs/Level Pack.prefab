@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 3503281154592091570}
   - component: {fileID: 3503281154592091573}
   - component: {fileID: 3503281154592091572}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Stompbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
