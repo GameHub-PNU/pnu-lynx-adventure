@@ -24,6 +24,7 @@ public class BossTankController : MonoBehaviour
     [Header("Hurt")]
     public float hurtTime;
     private float hurtCounter;
+    public GameObject hitBox;
 
     // Start is called before the first frame update
     void Start()
@@ -95,11 +96,6 @@ public class BossTankController : MonoBehaviour
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TakeHit();
-        }
-
     }
 
     public void TakeHit()
@@ -117,5 +113,7 @@ public class BossTankController : MonoBehaviour
         shotCounter = timeBetweenShots;
 
         anim.SetTrigger("StopMoving");
+
+        hitBox.SetActive(true);
     }
 }
