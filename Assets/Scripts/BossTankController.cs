@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossTankController : MonoBehaviour
 {
+    public enum bossStates {shooting, hurt, moving};
+    public bossStates currentState;
 
     public Transform theBoss;
     public Animator anim;
@@ -26,12 +28,84 @@ public class BossTankController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentState = bossStates.shooting; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch(currentState)
+        {
+            case bossStates.shooting:
+
+                break;
+
+            case bossStates.hurt:
+
+                if (hurtCounter > 0)
+                {
+                    hurtCounter -= Time.deltaTime;
+
+                    if (hurtCounter <= 0)
+                    {
+                        currentState = bossStates.moving;
+                    }
+                }
+
+                break;
+
+            case bossStates.moving:
+
+                if (moveRight)
+                {
+                    theBoss.position += new Vector3(moveSpeed * Time.deltaTime, 0f, 0f);
+
+                    if (theBoss.position.x > rightPoint.position.x)
+                    {
+                        theBoss.localScale = Vector3.one;
+
+                        moveRight = false;
+
+                        EndMovement();
+                    } 
+                } else
+                {
+                    theBoss.position -= new Vector3(moveSpeed * Time.deltaTime, 0f, 0f);
+
+                    if (theBoss.position.x < leftPoint.position.x)
+                    {
+                        theBoss.localScale = new Vector3(-1f, 1f, 1f);
+
+                        moveRight = true;
+
+                        EndMovement();
+                    }
+                }
+
+                break;
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TakeHit();
+        }
+
+    }
+
+    public void TakeHit()
+    {
+        currentState = bossStates.hurt;
+        hurtCounter = hurtTime;
+
+        anim.SetTrigger("Hit");
+    }
+
+    private void EndMovement()
+    {
+        currentState = bossStates.shooting;
+
+        shotCounter = timeBetweenShots;
+
+        anim.SetTrigger("StopMoving");
     }
 }
