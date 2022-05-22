@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
     }
     public IEnumerator EndLevelCo()
     {
-        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlayLevelVictory();
 
         PlayerController.instance.stopInput = true;
 
@@ -74,9 +74,11 @@ public class LevelManager : MonoBehaviour
 
         UIController.instance.FadeToBlack();
 
-        yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + .25F);
+        yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + 2.5F);
 
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_unlocked", 1);
+
+        PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name);
 
         if (PlayerPrefs.HasKey(SceneManager.GetActiveScene().name + "_gems"))
         {

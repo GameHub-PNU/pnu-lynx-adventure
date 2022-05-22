@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9771124ad95aa884c957882407bde92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelect: 
+  levelSelect: Levels
   mainMenu: MainMenu
   pauseScreen: {fileID: 3503281155794961900}
   isPaused: 0
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1130,7 +1130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitToRespawn: 1.5
   gemsCollected: 0
-  levelToLoad: MainMenu
+  timeInLevel: 0
+  levelToLoad: Levels
 --- !u!1 &3503281155982234175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,14 +1540,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8332764505376650420, guid: 8fa1826d5c3b48244a1c79681ca631b2, type: 3}
   m_PrefabInstance: {fileID: 3503281154501506235}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4845251481985512074 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8332764505265112625, guid: 8fa1826d5c3b48244a1c79681ca631b2, type: 3}
-  m_PrefabInstance: {fileID: 3503281154501506235}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4845251482073023481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8332764505142736706, guid: 8fa1826d5c3b48244a1c79681ca631b2, type: 3}
+  m_PrefabInstance: {fileID: 3503281154501506235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4845251481985512074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8332764505265112625, guid: 8fa1826d5c3b48244a1c79681ca631b2, type: 3}
   m_PrefabInstance: {fileID: 3503281154501506235}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3503281154569094132
