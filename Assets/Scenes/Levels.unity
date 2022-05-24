@@ -1706,6 +1706,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: levelName
+      value: '4: A little bit of rest'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: totalGems
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: targetTime
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: levelToLoad
       value: Level-4
       objectReference: {fileID: 0}
@@ -2040,6 +2052,18 @@ PrefabInstance:
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: isLocked
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: levelName
+      value: '3: Hard Attack'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: totalGems
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
+      propertyPath: targetTime
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: levelToLoad
