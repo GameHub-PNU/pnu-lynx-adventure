@@ -1723,7 +1723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7900023965371911445, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: levelToCheck
-      value: Level-3
+      value: Level-1
       objectReference: {fileID: 0}
     - target: {fileID: 8142904442862446778, guid: 072c1e1f6a0b9454eb1350c34e279fd1, type: 3}
       propertyPath: m_Name
